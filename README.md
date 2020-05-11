@@ -43,7 +43,7 @@ ou
 docker-compose up -d
 ```
 
-- Buildar os ambientes
+- Buildar os ambientes (não é necessário quando subir o ambiente pela primeira vez)
 ```
 make build
 ```
