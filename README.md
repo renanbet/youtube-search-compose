@@ -67,3 +67,11 @@ ou
 ```
 docker-compose down
 ```
+
+
+## Testes
+```
+cd tests
+make up
+make logs
+```
