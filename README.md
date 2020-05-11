@@ -1,7 +1,7 @@
 # youtube-search-compose
 Aplicação que cria o ambiente em docker das aplicações:
 - server: https://github.com/renanbet/youtube-search-server
-- client: https://github.com/renanbet/youtube-search-client (em desenvolvimento)
+- client: https://github.com/renanbet/youtube-search-client 
 
 ## Pré-requisitos
 
@@ -56,7 +56,7 @@ docker-compose build --no-cache
 
 ```
 http://localhost:8080
-
+```
 
 ## Para parar aplicações
 
