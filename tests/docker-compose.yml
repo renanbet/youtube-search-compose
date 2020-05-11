@@ -6,7 +6,7 @@ services:
       context: "./youtube-search-server"
       dockerfile: "dockerfile-test"
     ports:
-      - 3000:3000
+      - 3001:3000
     environment:
       SECRET: mysecretkey
       TOKEN_EXP: 3600000
@@ -24,4 +24,4 @@ services:
       context: "./youtube-search-client"
       dockerfile: "dockerfile-test"
     ports:
-      - 8080:80
+      - 8081:80
