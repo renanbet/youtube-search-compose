@@ -8,18 +8,18 @@ services:
     volumes:
       - ./youtube-search-server:/home/app
     ports:
-      - 3000:3000
+      - 3001:3000
     environment:
       SECRET: mysecretkey
       TOKEN_EXP: 3600000
       TOKEN_EXP_REFRESH: 120
       TIMEZONE: America/Sao_Paulo
-      GOOGLE_KEY: #GOOGLE_KEY
-      MONGO_USER: #MONGO_USER
-      MONGO_PWD: #MONGO_PWD
-      MONGO_HOST: #MONGO_HOST
-      MONGO_DB: #MONGO_TEST_DB
-      MONGO_PROTOCOL: #MONGO_PROTOCOL
+      GOOGLE_KEY: AIzaSyCkZAIsmNZ5cV9Em_npEssep_o10Pl2Z9M
+      MONGO_USER: mongoDbUser
+      MONGO_PWD: nov@senh@m0ng0
+      MONGO_HOST: cluster0-ycvck.gcp.mongodb.net
+      MONGO_DB: youtubetest
+      MONGO_PROTOCOL: mongodb+srv
   clienttest:
     container_name: youtube-search-client-test
     build: 
@@ -28,4 +28,4 @@ services:
     volumes:
       - ./youtube-search-client:/home/app
     ports:
-      - 8080:80
+      - 8081:80
