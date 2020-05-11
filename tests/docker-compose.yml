@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  apitest:
+    container_name: youtube-search-server-test
+    build: 
+      context: "./youtube-search-server"
+      dockerfile: "dockerfile-test"
+    volumes:
+      - ./youtube-search-server:/home/app
+    ports:
+      - 3000:3000
+    environment:
+      SECRET: mysecretkey
+      TOKEN_EXP: 3600000
+      TOKEN_EXP_REFRESH: 120
+      TIMEZONE: America/Sao_Paulo
+      GOOGLE_KEY: #GOOGLE_TEST_KEY
+      MONGO_URL: #MONGO_TEST_URL
+  clienttest:
+    container_name: youtube-search-client-test
+    build: 
+      context: "./youtube-search-client"
+      dockerfile: "dockerfile-test"
+    volumes:
+      - ./youtube-search-client:/home/app
+    ports:
+      - 8080:80
