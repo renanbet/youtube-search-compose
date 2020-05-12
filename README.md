@@ -1,5 +1,5 @@
 # O app
-- Para uma agenda semanal de tempo em minutos dedicado à assistir vídeos do youtube, o sistema busca até 200 vídeos, informando a quantidade de dias necessários para assisti-los e as 5 palavras mais presentes em suas descrições e títulos. O cáculo de tempo total, considera que o vídeo só poderá ser assistido se o mesmo terminar no mesmo dia. 
+Para uma agenda semanal de tempo em minutos dedicado à assistir vídeos do youtube, o sistema busca até 200 vídeos, informando a quantidade de dias necessários para assisti-los e as 5 palavras mais presentes em suas descrições e títulos. O cáculo de tempo total, considera que o vídeo só poderá ser assistido se o mesmo terminar no mesmo dia. 
 
 
 # youtube-search-compose
