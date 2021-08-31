@@ -1,24 +1,33 @@
-version: "3.7"
+version: '3.8'
 services:
-  api:
-    container_name: yss-container
-    build: "./youtube-search-server"
+  youtubeapi:
+    container_name: youtube-api
+    build: './youtube-search-server'
     restart: always
     ports:
       - 3000:3000
     environment:
-      SECRET: mysecretkey
-      TOKEN_EXP: 3600000
+      SECRET: mysecret
+      TOKEN_EXP: 60000
       TOKEN_EXP_REFRESH: 120
       TIMEZONE: America/Sao_Paulo
-      GOOGLE_KEY: AIzaSyCkZAIsmNZ5cV9Em_npEssep_o10Pl2Z9M
-      MONGO_USER: mongoDbUser
-      MONGO_PWD: nov@senh@m0ng0
-      MONGO_HOST: cluster0-ycvck.gcp.mongodb.net
-      MONGO_DB: youtube
-      MONGO_PROTOCOL: mongodb+srv
-  client:
-    container_name: ysc-container
-    build: "./youtube-search-client"
+      GOOGLE_KEY: AIzaSyCB_E_ZdjbvVAULDkRnptvSR-fOAJM7vBw
+      DB_HOST: youtubedb
+      DB_PORT: 27017
+      DB_NAME: youtube
+      TEST_DB_NAME: test
+    depends_on:
+      - 'youtubedb'
+  youtubedb:
+    image: mongo
+    container_name: youtube-db
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./database:/data/db
+  youtubeclient:
+    container_name: youtube-client
+    build: './youtube-search-client'
     ports:
       - 8080:80

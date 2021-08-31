@@ -1,27 +1,32 @@
-version: "3.7"
+version: '3.8'
 services:
   apitest:
     container_name: youtube-search-server-test
-    build: 
-      context: "./youtube-search-server"
-      dockerfile: "dockerfile-test"
-    ports:
-      - 3001:3000
+    build:
+      context: './youtube-search-server'
+      dockerfile: 'dockerfile-test'
     environment:
-      SECRET: mysecretkey
-      TOKEN_EXP: 3600000
+      SECRET: mysecret
+      TOKEN_EXP: 60000
       TOKEN_EXP_REFRESH: 120
       TIMEZONE: America/Sao_Paulo
-      GOOGLE_KEY: AIzaSyCkZAIsmNZ5cV9Em_npEssep_o10Pl2Z9M
-      MONGO_USER: mongoDbUser
-      MONGO_PWD: nov@senh@m0ng0
-      MONGO_HOST: cluster0-ycvck.gcp.mongodb.net
-      MONGO_DB: youtubetest
-      MONGO_PROTOCOL: mongodb+srv
+      GOOGLE_KEY: AIzaSyCB_E_ZdjbvVAULDkRnptvSR-fOAJM7vBw
+      DB_HOST: youtubedbtest
+      DB_PORT: 27017
+      DB_NAME: youtube
+      TEST_DB_NAME: test
+    depends_on:
+      - 'youtubedbtest'
+  youtubedbtest:
+    image: mongo
+    container_name: youtube-db-test
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./database:/data/db
   clienttest:
     container_name: youtube-search-client-test
-    build: 
-      context: "./youtube-search-client"
-      dockerfile: "dockerfile-test"
-    ports:
-      - 8081:80
+    build:
+      context: './youtube-search-client'
+      dockerfile: 'dockerfile-test'
